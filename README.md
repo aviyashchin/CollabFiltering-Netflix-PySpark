@@ -13,3 +13,16 @@ Collaborative filtering is commonly used for recommender systems. These techniqu
 
 It is common in many real-world use cases to only have access to implicit feedback (e.g. views, clicks, purchases, likes, shares etc.). The approach used in spark.mllib to deal with such data is taken from Collaborative Filtering for Implicit Feedback Datasets. Essentially instead of trying to model the matrix of ratings directly, this approach treats the data as a combination of binary preferences and confidence values. The ratings are then related to the level of confidence in observed user preferences, rather than explicit ratings given to items. The model then tries to find latent factors that can be used to predict the expected preference of a user for an item.
 
+#1. Data set
+We will use two files from this MovieLens dataset: “ratings.dat” and “movies.dat”. All ratings are contained in the file “ratings.dat” and are in the following format:
+
+UserID::MovieID::Rating::Timestamp
+Movie information is in the file “movies.dat” and is in the following format:
+
+MovieID::Title::Genres
+
+#2. Collaborative filtering
+Collaborative filtering is commonly used for recommender systems. These techniques aim to fill in the missing entries of a user-item association matrix, in our case, the user-movie rating matrix. MLlib currently supports model-based collaborative filtering, in which users and products are described by a small set of latent factors that can be used to predict missing entries. In particular, we implement the alternating least squares (ALS) algorithm to learn these latent factors.
+
+Matrix Factorization
+![Matrix Factorization](https://databricks-training.s3.amazonaws.com/img/matrix_factorization.png)
